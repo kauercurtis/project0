@@ -799,22 +799,29 @@ InitLists( )
 	BoxList = glGenLists( 1 );
 	glNewList( BoxList, GL_COMPILE );
 
-		glBegin( GL_QUADS );
-
+		glBegin( GL_LINE_LOOP );
+		
+		
 			glColor3f( 1., 0., 0. );
-
+				glVertex3f( 1.5, 0., 0. );
+				glVertex3f( 1.5, 2., 0. );
+				glVertex3f( 1., 2., 0. );
+				glVertex3f( 1., 0., 0. );
+			
+				
+		/*	
 				glNormal3f( 1., 0., 0. );
 					glVertex3f(  dx, -dy,  dz );
 					glVertex3f(  dx, -dy, -dz );
 					glVertex3f(  dx,  dy, -dz );
 					glVertex3f(  dx,  dy,  dz );
-
+			
 				glNormal3f(-1., 0., 0.);
 					glVertex3f( -dx, -dy,  dz);
 					glVertex3f( -dx,  dy,  dz );
 					glVertex3f( -dx,  dy, -dz );
 					glVertex3f( -dx, -dy, -dz );
-
+			
 			glColor3f( 0., 1., 0. );
 
 				glNormal3f(0., 1., 0.);
@@ -822,13 +829,13 @@ InitLists( )
 					glVertex3f(  dx,  dy,  dz );
 					glVertex3f(  dx,  dy, -dz );
 					glVertex3f( -dx,  dy, -dz );
-
+		
 				glNormal3f(0., -1., 0.);
 					glVertex3f( -dx, -dy,  dz);
 					glVertex3f( -dx, -dy, -dz );
 					glVertex3f(  dx, -dy, -dz );
 					glVertex3f(  dx, -dy,  dz );
-
+			
 			glColor3f(0., 0., 1.);
 
 				glNormal3f(0., 0., 1.);
@@ -842,7 +849,7 @@ InitLists( )
 					glVertex3f(-dx,  dy, -dz);
 					glVertex3f( dx,  dy, -dz);
 					glVertex3f( dx, -dy, -dz);
-
+		*/
 		glEnd( );
 #ifdef NOTDEF
 		glColor3f(1., 1., 1.);
