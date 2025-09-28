@@ -789,27 +789,54 @@ InitLists( )
 	if (DebugOn != 0)
 		fprintf(stderr, "Starting InitLists.\n");
 
-	float dx = BOXSIZE / 2.f;
-	float dy = BOXSIZE / 2.f;
-	float dz = BOXSIZE / 2.f;
+	float dx = 1;
+	float dy = 0.5;
+	// float dy = BOXSIZE / 2.f;
+	float dz = 1;
 	glutSetWindow( MainWindow );
 
 	// create the object:
 
 	BoxList = glGenLists( 1 );
 	glNewList( BoxList, GL_COMPILE );
+		
+		glBegin( GL_LINE_STRIP );
+			glColor3f( 0., 0., 1. );
+				glVertex3f( dx, dy, dz );
+				glVertex3f( dx, dy, -dz );
+				glVertex3f( -dx, dy, -dz );
+				glVertex3f( -dx, dy, dz );
+				glVertex3f( dx, dy, dz );
+		glEnd();
 
-		glBegin( GL_LINE_LOOP );
-		
-		
+		glBegin( GL_LINE_STRIP );
 			glColor3f( 1., 0., 0. );
-				glVertex3f( 1.5, 0., 0. );
-				glVertex3f( 1.5, 2., 0. );
-				glVertex3f( 1., 2., 0. );
-				glVertex3f( 1., 0., 0. );
-			
-				
-		/*	
+				glVertex3f( 0.15, dy, 0.15 );
+				glVertex3f( 0.25, dy, 0.05 );
+				glVertex3f( 0.25, dy, -0.05 );
+				glVertex3f( 0.15, dy, -0.15 );
+				glVertex3f( 0.05, dy, -0.15 );
+				glVertex3f( -0.05, dy, -0.05 );
+				glVertex3f( -0.05, dy, 0.05 );
+				glVertex3f( 0.05, dy, 0.15 );
+				glVertex3f( 0.15, dy, 0.15 );
+		glEnd();
+/*		
+		glBegin( GL_TRIANGLE_FAN );
+			glColor3f( 1., 0., 0. );
+				glNormal3f( 0. , 1., 0. );
+					glVertex3f( 0.5, 1., 1. );
+					glVertex3f( 1., 1., 0.5 );
+					glVertex3f( 1., 1., 0. );
+					glVertex3f( 0.5, 1., -0.5 );
+					glVertex3f( 0., 1., -0.5 );
+					glVertex3f( -0.5, 1., 0. );
+					glVertex3f( -0.5, 1., 0.5 );
+					glVertex3f( -0.5, 1., 0.5 );
+					glVertex3f( 0., 1., 1. );
+			*/
+			/*
+						
 				glNormal3f( 1., 0., 0. );
 					glVertex3f(  dx, -dy,  dz );
 					glVertex3f(  dx, -dy, -dz );
@@ -849,8 +876,9 @@ InitLists( )
 					glVertex3f(-dx,  dy, -dz);
 					glVertex3f( dx,  dy, -dz);
 					glVertex3f( dx, -dy, -dz);
+		glEnd();
 		*/
-		glEnd( );
+
 #ifdef NOTDEF
 		glColor3f(1., 1., 1.);
 		glBegin(GL_TRIANGLES);
