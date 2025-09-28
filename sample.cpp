@@ -821,6 +821,19 @@ InitLists( )
 				glVertex3f( 0.05, dy, 0.15 );
 				glVertex3f( 0.15, dy, 0.15 );
 		glEnd();
+		
+		float numsegs = 20.;
+		float radius = 0.15;
+		float dang = 2. *M_PI / (float)(numsegs - 1);
+		float ang = 0.;
+		glBegin( GL_LINE_LOOP );
+			glColor3f(0., 1., 0.);
+				for( int i = 0; i < numsegs; i++ )
+				{
+					glVertex3f( -0.6 + radius * cos(ang), dy, 0.6 + radius * sin(ang) );
+					ang += dang;
+				}
+		glEnd();
 /*		
 		glBegin( GL_TRIANGLE_FAN );
 			glColor3f( 1., 0., 0. );
