@@ -808,24 +808,53 @@ InitLists( )
 				glVertex3f( -dx, dy, dz );
 				glVertex3f( dx, dy, dz );
 		glEnd();
-
+		
+		// joystick
+		float numsegs = 9.;
+		float radius = 0.1;
+		float dang = 2. *M_PI / (float)(numsegs - 1);
+		float ang = 0.15;
 		glBegin( GL_LINE_STRIP );
 			glColor3f( 1., 0., 0. );
-				glVertex3f( 0.15, dy, 0.15 );
-				glVertex3f( 0.25, dy, 0.05 );
-				glVertex3f( 0.25, dy, -0.05 );
-				glVertex3f( 0.15, dy, -0.15 );
-				glVertex3f( 0.05, dy, -0.15 );
-				glVertex3f( -0.05, dy, -0.05 );
-				glVertex3f( -0.05, dy, 0.05 );
-				glVertex3f( 0.05, dy, 0.15 );
-				glVertex3f( 0.15, dy, 0.15 );
+				for( int i = 0; i < numsegs; i++ )
+				{
+					glVertex3f( radius * cos(ang), dy, radius * sin(ang) );
+					ang += dang;
+				}
 		glEnd();
 		
-		float numsegs = 20.;
-		float radius = 0.15;
-		float dang = 2. *M_PI / (float)(numsegs - 1);
-		float ang = 0.;
+		// joystick rotation rubber
+		numsegs = 25.;
+		radius = 0.3;
+		dang = 2. *M_PI / (float)(numsegs - 1);
+		ang = 0.;
+		glBegin( GL_LINE_LOOP );
+			glColor3f(1., 1., 0.);
+				for( int i = 0; i < numsegs; i++ )
+				{
+					glVertex3f( radius * cos(ang), dy, radius * sin(ang) );
+					ang += dang;
+				}
+		glEnd();
+		
+		numsegs = 35.;
+		radius = 0.5;
+		dang = 2. *M_PI / (float)(numsegs - 1);
+		ang = 0.;
+		glBegin( GL_LINE_LOOP );
+			glColor3f(1., 1., 1.);
+				for( int i = 0; i < numsegs; i++ )
+				{
+					glVertex3f( radius * cos(ang), dy, radius * sin(ang) );
+					ang += dang;
+				}
+		glEnd();
+		
+		// button
+		numsegs = 20.;
+		radius = 0.15;
+		dang = 2. *M_PI / (float)(numsegs - 1);
+		ang = 0.;
 		glBegin( GL_LINE_LOOP );
 			glColor3f(0., 1., 0.);
 				for( int i = 0; i < numsegs; i++ )
